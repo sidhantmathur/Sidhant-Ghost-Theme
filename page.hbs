@@ -1,0 +1,31 @@
+{{!< default}}
+
+{{#post}}
+
+<main class='o-wrapper'>
+  <article>
+    {{> post-header }}
+
+    <div class='o-grid'>
+      <div class='o-grid__col o-grid__col--center o-grid__col--4-4-s'>
+        <div class='c-{{ post_class }}'>
+          {{!-- Show the page if the user can access the post, this means that:
+          1. The page is public for anyone
+          2. The page is published for subscribers and the user is a subscriber
+          3. The page is for paid members only and the user is a paid member --}}
+          {{#if access}}
+            <div class='c-content'>
+              {{ content }}
+            </div>
+
+          {{!-- If the page is published for subscribers and paid members and the user is not one of those, show the upgrade box --}}
+          {{else}}
+            {{> page-upgrade-cta }}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+
+{{/post}}

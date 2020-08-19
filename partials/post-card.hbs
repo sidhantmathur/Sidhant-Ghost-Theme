@@ -1,0 +1,46 @@
+<div class='js-grid__col o-grid__col o-grid__col--initial-grow o-grid__col--4-4-s o-grid__col--2-4-m o-grid__col--2-4-l js-post-card-wrap c-post-card-wrap {{ post_class }}'>
+  <div class='c-post-card {{#if featured}} c-post-card--featured {{/if}} {{#is 'home'}} {{/is}} {{#if feature_image}} c-post-card--with-image {{/if}} {{#unless feature_image}} c-post-card--no-image {{/unless}}'>
+    {{#if feature_image}}
+      <div class='c-post-card__media'>
+        <a href='{{ url }}' class='c-post-card__image-wrap' aria-hidden='true' tabindex='-1'>
+          <img
+            alt='{{title}}'
+            class='c-post-card__image lazyload'
+            data-srcset='
+              {{ img_url feature_image size='s' }} 320w,
+              {{ img_url feature_image size='m' }} 640w,
+              {{ img_url feature_image size='l' }} 1024w
+          '
+            data-src='{{ img_url feature_image size='l' }}'
+          />
+        </a>
+      </div>
+    {{/if}}
+
+    <div class='c-post-card__content {{#unless feature_image}} c-post-card__content--no-image {{/unless}}'>
+      <div class='c-post-card__meta'>
+        {{#primary_author}}
+          <a href='{{ url }}' class='c-post-card__author'>{{ name }}</a>
+        {{/primary_author}}
+
+        <time class='c-post-card__date' datetime='{{ date format='YYYY-MM-DD' }}' title='{{ date format='DD MMMM YYYY' }}'>{{ date format='DD MMM YYYY' }}</time>
+
+        {{#if @labs.members}}
+          <div class='c-post-card__visibility c-post-card__visibility--{{ visibility }}'>
+            <span class='paid'>{{t 'Paid' }}</span>
+            <span class='members'>{{t 'Members' }}</span>
+            <span class='public'>{{t 'Public' }}</span>
+          </div>
+        {{/if}}
+      </div>
+
+      <h2 class='c-post-card__title'>
+        <a href='{{ url }}' class='c-post-card__title-link'>
+          {{ title }}
+        </a>
+      </h2>
+
+      <p class='c-post-card__excerpt'>{{ excerpt }}</p>
+    </div>
+  </div>
+</div>
