@@ -3,13 +3,11 @@
     <div class='o-grid__col o-grid__col--initial-grow o-grid__col--4-4-s o-grid__col--2-4-m'>
       <div class='c-hero__content'>
 
+      {{{ @site.description }}}
 
 
         {{#if @labs.members}}
-        <h3>Hey, <br>it's Sidhant again</h3>
-        <p>Welcome back!</p>
           {{#unless @member}}
-                  {{{ @site.description }}}
             {{> subscribe-form inputLabel='subscribe-email-hero'}}
           {{/unless}}
         {{/if}}
