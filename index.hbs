@@ -1,7 +1,11 @@
 {{!< default}}
 
 <div class='o-wrapper'>
-  {{> hero }}
+  {{#if @labs.members}}
+    {{#unless @member}}
+      {{> hero }}
+    {{/unless}}
+  {{/if}}
 
   <div class='o-grid'>
     {{> index-tag-list }}
